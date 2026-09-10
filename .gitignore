@@ -1,0 +1,41 @@
+# Node modules
+node_modules/
+
+# Environment variables (VERY IMPORTANT)
+.env
+
+# SSH / TLS private keys (never commit)
+*.pem
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build files
+dist/
+build/
+
+# Coverage
+coverage/
+
+# IDE files
+.vscode/
+.idea/
+
+*.env
+
+# Coursework notes (keep local only)
+courseowork.md
+docs/REPORT.md
+docs/API_ENDPOINTS_FULL.md
+docs/MANUAL_TESTING.md
+
+
+data/*
+
+/docs/diagrams/*
