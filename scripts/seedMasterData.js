@@ -70,12 +70,18 @@ const seedMasterData = async () => {
   console.log(`MongoDB connected — database "${getAppDatabaseName()}"`);
 
   try {
+    // Clear stale malformed geo-boundary payloads left by earlier failed runs.
+    await Promise.all([
+      Province.updateMany({ boundary: { $exists: true } }, { $unset: { boundary: "" } }),
+      District.updateMany({ boundary: { $exists: true } }, { $unset: { boundary: "" } })
+    ]);
+
     const provinceMap = new Map();
 
     for (const provinceData of provinces) {
       const province = await Province.findOneAndUpdate(
         { $or: [{ name: provinceData.name }, { code: provinceData.code }] },
-        provinceData,
+        { $set: provinceData, $unset: { boundary: "" } },
         { upsert: true, returnDocument: "after", runValidators: true }
       );
       provinceMap.set(province.name, province._id);
@@ -87,7 +93,7 @@ const seedMasterData = async () => {
       for (const districtData of districts) {
         const district = await District.findOneAndUpdate(
           { $or: [{ name: districtData.name }, { code: districtData.code }] },
-          { ...districtData, province: provinceId },
+          { $set: { ...districtData, province: provinceId }, $unset: { boundary: "" } },
           { upsert: true, returnDocument: "after", runValidators: true }
         );
 
