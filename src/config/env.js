@@ -1,4 +1,8 @@
-const requiredEnv = ["MONGO_URI", "JWT_SECRET"];
+const requiredEnv = ["JWT_SECRET"];
+
+if (process.env.NODE_ENV === "production") {
+  requiredEnv.push("MONGO_URI");
+}
 
 export const validateRequiredEnv = () => {
   const missing = requiredEnv.filter((name) => !process.env[name]);
