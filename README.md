@@ -2,9 +2,9 @@
 
 A RESTful Web API for tracking three-wheelers (tuk-tuks) and their movement history, designed for use by police headquarters, provincial offices, district offices and police stations. The API exposes administrative geography (provinces, districts, stations), registered vehicles, and a high-volume location-ping pipeline, with role-based access and GeoJSON-aware geographic filtering.
 
-> Author: Pradeesha Hettiarachchi · Student ID: COBSCCOMP242P-052
+> Author: Sadew Yasas · Student ID: COBSCCOMP242P-075
 
-**Live API:** [`https://webapi-tuktuk.duckdns.org`](https://webapi-tuktuk.duckdns.org)
+
 **Swagger UI:** [`https://webapi-tuktuk.duckdns.org/api-docs/`](https://webapi-tuktuk.duckdns.org/api-docs/)
 
 ---
