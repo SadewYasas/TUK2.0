@@ -334,6 +334,7 @@ export const deleteTuk = async (req, res) => {
     if (!current) return res.status(404).json({ error: "Not found" });
     if (!isHomeTukDoc(current, req.auth)) return res.status(403).json({ error: "Forbidden" });
 
+    // Mark the tuk as deleted while preserving its MongoDB record for recovery and auditing.
     const tuk = await Tuk.findOneAndUpdate(
       mergeActive({ _id: req.params.id }),
       { deletedAt: new Date() },

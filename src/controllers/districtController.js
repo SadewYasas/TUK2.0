@@ -94,6 +94,7 @@ export const updateDistrict = async (req, res) => {
 // Soft-delete one district by Mongo id.
 export const deleteDistrict = async (req, res) => {
   try {
+    // Keep the document in MongoDB, but mark it deleted so active queries can exclude it.
     const district = await District.findOneAndUpdate(
       mergeActive({ _id: req.params.id }),
       { deletedAt: new Date() },

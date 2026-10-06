@@ -94,6 +94,7 @@ export const updatePoliceStation = async (req, res) => {
 // Soft-delete one police station by Mongo id.
 export const deletePoliceStation = async (req, res) => {
   try {
+    // Preserve the document while recording when it was deleted for active-query filtering.
     const station = await PoliceStation.findOneAndUpdate(
       mergeActive({ _id: req.params.id }),
       { deletedAt: new Date() },

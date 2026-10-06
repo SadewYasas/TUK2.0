@@ -76,6 +76,7 @@ export const updateProvince = async (req, res) => {
 // Soft-delete one province by Mongo id.
 export const deleteProvince = async (req, res) => {
   try {
+    // Store the deletion timestamp without removing the province document from MongoDB.
     const province = await Province.findOneAndUpdate(
       mergeActive({ _id: req.params.id }),
       { deletedAt: new Date() },
