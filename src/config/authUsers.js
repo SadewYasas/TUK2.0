@@ -6,7 +6,7 @@ const defaultUsers = [
   },
   {
     username: "province_user",
-    password: "province123",
+    password: "province123", #somechanges
     role: "PROVINCE_ADMIN"
   },
   {
