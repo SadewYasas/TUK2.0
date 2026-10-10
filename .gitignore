@@ -1,5 +1,6 @@
 # Node modules
 node_modules/
+.mongodb-binaries/
 
 # Environment variables (VERY IMPORTANT)
 .env
